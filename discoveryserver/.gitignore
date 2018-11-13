@@ -1,0 +1,7 @@
+/target/
+.idea
+.settings
+/bin/
+.classpath
+discovery-server.iml
+.project

@@ -1,0 +1,20 @@
+version: "2"
+services:
+  redis:
+    image: andreymarkelov/customredis:latest
+    ports:
+      - "6379:6379"
+  simple-sd:
+    image: andreymarkelov/servicediscovery:latest
+    ports:
+      - "8761:8761"
+  script-sidecar:
+    image: andreymarkelov/script-sidecar:latest
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKASERVER_URI=http://simple-sd:8761/eureka/
+      - EUREKASERVER_PORT=8761
+      - HEALTH_SCRIPT=/scripts/health.groovy
+    volumes_from:
+      - redis

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: redis-sidecar
+  profiles:
+    active:
+      default

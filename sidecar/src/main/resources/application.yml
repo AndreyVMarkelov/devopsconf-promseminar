@@ -1,0 +1,31 @@
+server.port: 8082
+
+sidecar:
+  hostname: ${SIDECAR_HOST:localhost}
+  port: ${SIDECAR_PORT:6379}
+  health-uri: ${SIDECAR_URI:http://localhost:8082/delegating-status}
+  home-page-uri: ${SIDECAR_PAGE:http://localhost:8082/delegating-info}
+
+eureka:
+  instance:
+    preferIpAddress: true
+    metadata-map:
+      app-type: "redis"
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKASERVER_URI:http://localhost:8761/eureka/}
+
+info:
+  app:
+    name: redis-sidecar
+    description: Redis sidecar
+    version: "@project.version@"
+
+management:
+  endpoint:
+    metrics.enabled: true
+    prometheus.enabled: true
+  endpoints.web.exposure.include: health,info,prometheus
+  metrics.export.prometheus.enabled: true

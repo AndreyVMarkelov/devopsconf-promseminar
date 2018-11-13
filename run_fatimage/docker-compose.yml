@@ -1,0 +1,14 @@
+version: "2"
+services:
+  simple-sd:
+    image: andreymarkelov/servicediscovery:latest
+    ports:
+      - "8761:8761"
+  redis-sidecar:
+    image: andreymarkelov/redis-sidecar:latest
+    ports:
+      - "6379:6379"
+      - "8082:8082"
+    environment:
+      - EUREKASERVER_URI=http://simple-sd:8761/eureka/
+      - EUREKASERVER_PORT=8761
