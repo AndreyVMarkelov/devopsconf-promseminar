@@ -20,4 +20,4 @@ docker-compose -f run_thinimage/docker-compose.yml up
 ```
 
 #### 3.1 Go to service discovery: http://localhost:8761/
-#### 3.2 Go to health check: http://localhost:8082/actuator/health
+#### 3.2 Go to health check: http://localhost:8083/actuator/health
