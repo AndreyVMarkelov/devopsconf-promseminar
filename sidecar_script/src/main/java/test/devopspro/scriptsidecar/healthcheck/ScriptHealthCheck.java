@@ -1,17 +1,15 @@
 package test.devopspro.scriptsidecar.healthcheck;
 
-import java.io.File;
-
-import javax.annotation.PostConstruct;
-
+import groovy.lang.GroovyShell;
+import groovy.lang.Script;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 
-import groovy.lang.GroovyShell;
-import groovy.lang.Script;
+import javax.annotation.PostConstruct;
+import java.io.File;
 
 public class ScriptHealthCheck implements HealthIndicator {
     private static final GroovyShell shell = new GroovyShell(ScriptHealthCheck.class.getClassLoader());
